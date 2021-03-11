@@ -1,4 +1,4 @@
-/*
+/* alles cap
 package ch.noser.uek223.domain.unitTest;
 
 import ch.noser.uek223.domain.authority.Authority;

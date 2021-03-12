@@ -28,7 +28,7 @@ public class UserWeb {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTOMinimal> create(@RequestBody UserDTONew user) {
+    public ResponseEntity<UserDTOMinimal> save(@RequestBody UserDTONew user) {
         return new ResponseEntity<UserDTOMinimal>(userMapper.toDTO(userService.create(userMapper.userDTONewToUser(user))), HttpStatus.CREATED);
     }
 

@@ -9,5 +9,5 @@ public interface UserService extends UserDetailsService {
     List<User> findAll();
     User findById(UUID id);
     User create(User entity);
-
+    User save(User user);
 }

@@ -55,6 +55,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User save(User user) {
+        Optional<User> optional = userRepository.findByEmail(user.getEmail());
+
+        if (optional.isPresent()) {
+            throw new RuntimeException(String.format("%s with Email '%s' already exists", "User", user.getEmail()));
+        }
+
+        user.setId(null);
+        user.setPasswordHash(encoder.encode(user.getPasswordHash()));
+        user = userRepository.saveAndFlush(user);
+
+        return user;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username).map(UserDetailsImpl::new).orElseThrow(() -> new UsernameNotFoundException(username));
     }

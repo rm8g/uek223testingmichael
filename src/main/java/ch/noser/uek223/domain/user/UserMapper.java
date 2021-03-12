@@ -12,4 +12,5 @@ public interface UserMapper {
     List<UserDTOMinimal> usersToUsersDTOMinimal(List<User> users);
     UserDTOMinimal toDTO(User user);
     User userDTONewToUser(UserDTONew user);
+    User userDTOMinimalToUser(UserDTOMinimal user);
 }

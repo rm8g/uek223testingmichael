@@ -38,10 +38,14 @@ public class UserWebUnitTest {
     private MockMvc mockMvc;
 
     @Test
-    @WithMockUser(username = "tester", password = "password")
+    @WithMockUser(username = "tester", password = "password", roles = "")
     public void findAll_requestAllUsers_returnsAllUsers() throws Exception {
-        User user1 = new User(UUID.randomUUID(), "cs@mail.com", "", "Chris", "South", Set.of(new Role().setName("ADMIN").setAuthorities(Set.of(new Authority().setName("CAN_RETRIEVE_ALL_PRODUCTS")))), null, null);
-        User user2 = new User(UUID.randomUUID(), "aa@mail.com", "", "Anna", "Abby", Set.of(new Role().setName("CUSTOMER").setAuthorities(Set.of(new Authority().setName("CAN_DELETE_USER")))), null, null);
+//        User user1 = new User(UUID.randomUUID(), "cs@mail.com", "", "Chris", "South", Set.of(new Role().setName("ADMIN").setAuthorities(Set.of(new Authority().setName("CAN_RETRIEVE_ALL_PRODUCTS")))), null, null);
+//        User user2 = new User(UUID.randomUUID(), "aa@mail.com", "", "Anna", "Abby", Set.of(new Role().setName("CUSTOMER").setAuthorities(Set.of(new Authority().setName("CAN_DELETE_USER")))), null, null);
+
+
+        User user1 = new User().setId(UUID.randomUUID()).setEmail("cs@mail.com").setPasswordHash("").setFirstName("Chris").setSurname("South").setRoles(Set.of(new Role().setName("ADMIN").setAuthorities(Set.of(new Authority().setName("CAN_RETRIEVE_ALL_PRODUCTS")))));
+        User user2 = new User().setId(UUID.randomUUID()).setEmail("aa@mail.com").setPasswordHash("").setFirstName("Anna").setSurname("Abby").setRoles(Set.of(new Role().setName("CUSTOMER").setAuthorities(Set.of(new Authority().setName("CAN_DELETE_USER")))));
 
         List<User> usersToBeTestedAgainst = new ArrayList<>();
         usersToBeTestedAgainst.add(user1);

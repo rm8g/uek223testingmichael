@@ -55,18 +55,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User save(User user) {
-        Optional<User> optional = userRepository.findByEmail(user.getEmail());
+    public final User save(User user) {
+//        Optional<User> optional = userRepository.findByEmail(user.getEmail());
+//
+//        if (optional.isPresent()) {
+//            throw new RuntimeException(String.format("%s with Email '%s' already exists", "User", user.getEmail()));
+//        }
+//
+//        user.setId(null);
+//        user.setPasswordHash(encoder.encode(user.getPasswordHash()));
+//        user = userRepository.saveAndFlush(user);
+//
+//        return user;
 
-        if (optional.isPresent()) {
-            throw new RuntimeException(String.format("%s with Email '%s' already exists", "User", user.getEmail()));
-        }
-
-        user.setId(null);
-        user.setPasswordHash(encoder.encode(user.getPasswordHash()));
-        user = userRepository.saveAndFlush(user);
-
-        return user;
+        return userRepository.saveAndFlush(user);
     }
 
     @Override
